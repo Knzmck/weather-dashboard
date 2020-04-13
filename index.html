@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Tracker</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+    <header><h1>Weather Dashboard</h1></header>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-6 col-md-4 card">
+          <form class="form-group">
+            <label for="search-term" id="search-term">Search for a City:</label>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search">
+                <div class="input-group-append">
+                  <button class="btn btn-primary" type="submit">Go</button>
+                </div>
+              </div>
+          </form>
+          <section class="row" id="recent-searches"></section>
+        </div>
+
+        <main class="col-md-8 card">
+          <section>
+            <section class="row col-md-8 card" id="weather-today">
+            <h2 class="row mb-4 ml-2 mt-3">Kansas City</h2>
+
+            <h6 class="row mb-4 ml-2">Temperature: <text id="temp"> </text></h6>
+            <h6 class="row mb-4 ml-2">Humidity: <text id="humidity"> </text></h6>
+            <h6 class="row mb-4 ml-2">Wind Speed: <text id="wind"> </text></h6>
+            <h6 class="row mb-4 ml-2">UV Index:<text id="uv" class="card"> </text></h6>
+          </section>
+          <section id="5day-forecast">
+            <h2 class="row mt-3 ml-2 mb-4">5-Day Forecast</h2>
+            <div class="row">
+              <div class="box card">
+                  <h6>Date</h6>
+                  <div class="row"><img></div>
+                  <text class ="row"id="1day-temp"></text>
+                  <text class ="row" id="1day-humidity"></text>
+                </div>
+              <div class="box card"><h6>Date</h6></div>
+              <div class="box card"><h6>Date</h6></div>
+              <div class="box card"><h6>Date</h6></div>
+              <div class="box card"><h6>Date</h6></div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+  <script src="./script.js"></script>
+</html>
