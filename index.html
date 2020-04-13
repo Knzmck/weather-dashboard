@@ -10,7 +10,6 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -34,12 +33,12 @@
         <main class="col-md-8 card">
           <section>
             <section class="row col-md-8 card" id="weather-today">
-            <h2 class="row mb-4 ml-2 mt-3">Kansas City</h2>
+            <h2 class="row mb-4 ml-2 mt-3" id="city"></h2>
 
-            <h6 class="row mb-4 ml-2">Temperature: <text id="temp"> </text></h6>
-            <h6 class="row mb-4 ml-2">Humidity: <text id="humidity"> </text></h6>
-            <h6 class="row mb-4 ml-2">Wind Speed: <text id="wind"> </text></h6>
-            <h6 class="row mb-4 ml-2">UV Index:<text id="uv" class="card"> </text></h6>
+            <h6 class="row mb-4 ml-2">Temperature: <text class="ml-2" id="temp">  </text></h6>
+            <h6 class="row mb-4 ml-2">Humidity: <text class="ml-2" id="humidity"> </text></h6>
+            <h6 class="row mb-4 ml-2">Wind Speed: <text class="ml-2" id="wind"> </text></h6>
+            <h6 class="row mb-4 ml-2">UV Index:<text class="ml-2" id="uv" class="card"> </text></h6>
           </section>
           <section id="5day-forecast">
             <h2 class="row mt-3 ml-2 mb-4">5-Day Forecast</h2>
@@ -60,8 +59,8 @@
       </div>
     </div>
   </body>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
   <script src="./script.js"></script>
 
 </html>

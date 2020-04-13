@@ -14,18 +14,11 @@ $("#search-btn").click(function (e) {
 
     }).then(function (response) {
         console.log(response);
-        // return city name to H1 
-        // return temp, humidity, wind speed and UV Index (changing color with UV Index value green, yellow, red)
-        // return 5 day forecast for chosen city with date, picture of sun/rain/clouds/storm, high temp, and humidity 
-        // create new divs with recent searches 
-        // clear search box
+            var temp = (response.main.temp - 273.15) * 1.8 + 32;
+            $("#city").text(response.name);
+            $("#temp").text(temp.toFixed(0) + "° F");
+            $("#wind").text(response.wind.speed + " MPH");
+            $("#humidity").text(response.main.humidity + "%");
 
     })
 })
-
-// create same function for clicking on saved city
-
-
-// when user saves 8 cities, oldest city gets kicked off list and newest city gets put on list first
-
-// UV Index values 0-3 is green, 3-5 is yellow moderate, 6-7 is orange high, 8-10 is red very high, 11+ is violet extreme
