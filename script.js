@@ -44,6 +44,7 @@ if (localStorage.getItem("searchHistory")) {
         var uvEl = parseFloat(response.current.uvi.toFixed(1));
         $('#uv').text(uvEl)
         console.log(response);
+        $('#0day-temp').text(((response.daily[0].temp.day)-273.15) * 1.8 + 32)
       });
     });
   }
@@ -72,10 +73,12 @@ if (localStorage.getItem("searchHistory")) {
 //   function for searching recently searched city
   $(".historyBtn").click(function (e) {
   getWeather($(this).text())
+
   });
   
-  
-  
+
+//   var now = moment();
+//   console.log(now);
   
   // when user saves 8 cities, oldest city gets kicked off list and newest city gets put on list first
   

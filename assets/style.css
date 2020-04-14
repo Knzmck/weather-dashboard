@@ -52,3 +52,8 @@ h1 {
     border-style: solid;
     border: blue;
 }
+
+.boxstyle {
+    font-size: small;
+    color: white;
+}
