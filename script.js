@@ -53,9 +53,9 @@ function getWeather(city) {
         $("#humidity").text("Humidity: " + response.main.humidity + "%");
 
         // displaying weather icon
-        // var iconcode = response.weather[0].icon;
+        var iconcode = (response.weather[0].icon);
         // var iconurl = "http://openweathermap.org/img/w/10d.png";
-        // $('#wicon').attr('src', iconurl);
+        $('#today-icon').attr('src', 'http://openweathermap.org/img/w/' + iconcode + '.png');
         console.log(response.weather[0].icon);
 
         //   second ajax call using data above to get a more detailed future forecast and UV index
