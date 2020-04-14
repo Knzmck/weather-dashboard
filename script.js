@@ -11,8 +11,18 @@ if (localStorage.getItem("searchHistory")) {
   else{
       var searchHistory = []
   }
-  //
+  // Getting today's date and future dates
+
+  const today = moment();
+  console.log( moment().format('MM-DD-YYYY'));
+  $("#today-date").text(moment().format('MM-DD-YYYY'))
+  $("#0day-date").text(moment().add(1, 'days').format('MM-DD-YYYY'));
+  $("#1day-date").text(moment().add(2, 'days').format('MM-DD-YYYY'));
+  $("#2day-date").text(moment().add(3, 'days').format('MM-DD-YYYY'));
+  $("#3day-date").text(moment().add(4, 'days').format('MM-DD-YYYY'));
+  $("#4day-date").text(moment().add(5, 'days').format('MM-DD-YYYY'));
   
+//   Ajax call to retrieve weather data from openweathermap
   console.log(searchHistory);
   function getWeather(city) {
     var yourKey = "4c6debcfabe452a31f0225082b5f86a9";
@@ -36,20 +46,25 @@ if (localStorage.getItem("searchHistory")) {
       $('#temp').text(temp.toFixed(0) + '° F')
       $('#wind').text(response.wind.speed + ' MPH');
       $('#humidity').text(response.main.humidity + '%');
-  
+//   second ajax call using data above to get a more detailed future forecast and UV index
       $.ajax({
         url: queryURL,
         method: "GET",
       }).then(function (response) {
+         // test response
+        console.log(response);
+
+        //  displaying UV index as a number
         var uvEl = parseFloat(response.current.uvi.toFixed(1));
         $('#uv').text(uvEl)
-        console.log(response);
-        $('#0day-temp').text(((response.daily[0].temp.day)-273.15) * 1.8 + 32)
+
+        // displaying future forecast
+        $('#0day-temp').text((((response.daily[0].temp.day)-273.15) * 1.8 + 32).toFixed(1))
       });
     });
   }
   
-  // Search button event: grab input from each box, performs search operation, clears out divs
+  // Search button event: grab input from each box, performs search operation, pushes results to array of saved cities, clears out divs
   $("#search-btn").click(function (e) {
     e.preventDefault();
     var city = $("#city-input").val();
@@ -76,10 +91,9 @@ if (localStorage.getItem("searchHistory")) {
 
   });
   
-
-  const today = moment();
-  console.log( moment().format('MM-DD-YYYY'));
  
+
+  
   
   // when user saves 8 cities, oldest city gets kicked off list and newest city gets put on list first
   
