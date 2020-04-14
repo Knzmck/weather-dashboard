@@ -77,8 +77,9 @@ if (localStorage.getItem("searchHistory")) {
   });
   
 
-//   var now = moment();
-//   console.log(now);
+  const today = moment();
+  console.log( moment().format('MM-DD-YYYY'));
+ 
   
   // when user saves 8 cities, oldest city gets kicked off list and newest city gets put on list first
   
