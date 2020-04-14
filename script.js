@@ -1,23 +1,19 @@
 //loading search History and buttons when page loads
-
 if (localStorage.getItem("searchHistory")) {
     var searchHistory = localStorage.getItem("searchHistory").split(",");
     console.log(searchHistory);
     for (let i = 0; i < searchHistory.length; i++) {
         var recentSearches = $("#recent-searches");
-        var newBtn = $(
-            "<button class='btn btn-link btn-lg active historyBtn'>"
-        ).text(searchHistory[i]);
+        var newBtn = $("<button class='btn btn-link btn-lg active historyBtn'>").text(searchHistory[i]);
         recentSearches.append(newBtn);
     }
 } else {
     var searchHistory = [];
-    getWeather('Kansas City')
 }
 // Getting today's date and future dates
 
 const today = moment();
-console.log(moment().format("MM-DD-YYYY"));
+// console.log(moment().format("MM-DD-YYYY"));
 $("#today-date").text(moment().format("MM-DD-YYYY"));
 $("#0day-date").text(moment().add(1, "days").format("MM-DD-YYYY"));
 $("#1day-date").text(moment().add(2, "days").format("MM-DD-YYYY"));
@@ -38,7 +34,7 @@ function getWeather(city) {
         url: queryURL,
         method: "GET",
     }).then(function (response) {
-        console.log(response);
+        // console.log(response);
         var lat = response.coord.lat;
         var lon = response.coord.lon;
         var queryURL =
@@ -58,7 +54,6 @@ function getWeather(city) {
         var iconcode = (response.weather[0].icon);
         // var iconurl = "http://openweathermap.org/img/w/10d.png";
         $('#today-icon').attr('src', 'http://openweathermap.org/img/w/' + iconcode + '.png');
-        console.log(response.weather[0].icon);
 
         //   second ajax call using data above to get a more detailed future forecast and UV index
         $.ajax({
@@ -66,7 +61,7 @@ function getWeather(city) {
             method: "GET",
         }).then(function (response) {
             // test response
-            console.log(response);
+            // console.log(response);
 
             //  displaying UV index as a number
             var uvEl = parseFloat(response.current.uvi.toFixed(1));
@@ -98,27 +93,24 @@ function getWeather(city) {
                 ((response.daily[4].temp.day - 273.15) * 1.8 + 32).toFixed(1) +
                 "° F"
             );
-            
+
             // display icons for future forecast boxes 
             var iconCode = (response.daily[0].weather[0].icon);
             $('#0day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
-            console.log(response.daily[0].weather[0].icon);
 
             var iconCode = (response.daily[1].weather[0].icon);
             $('#1day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
-            console.log(response.daily[1].weather[0].icon);
 
             var iconCode = (response.daily[2].weather[0].icon);
             $('#2day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
-            console.log(response.daily[2].weather[0].icon);
 
             var iconCode = (response.daily[3].weather[0].icon);
             $('#3day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
-            console.log(response.daily[3].weather[0].icon);
+
 
             var iconCode = (response.daily[4].weather[0].icon);
             $('#4day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
-            console.log(response.daily[4].weather[0].icon);
+
 
 
             // displaying humidity for future forecast boxes
@@ -138,18 +130,24 @@ $("#search-btn").click(function (e) {
     $("#city-input").val("");
     if (searchHistory.indexOf(city) !== -1) {
         getWeather(city);
+
     } else if (searchHistory.length < 8) {
+
         searchHistory.push(city);
         getWeather(city);
+
         //   creates new button
         var newBtn = $(
             "<button class='btn btn-link btn-lg active historyBtn'>"
         ).text(city);
         recentSearches.append(newBtn);
+
     } else {
+
         searchHistory.shift();
         searchHistory.push(city);
         getWeather(city);
+
         //   creates new button
         var newBtn = $(
             "<button class='btn btn-link btn-lg active historyBtn'>"

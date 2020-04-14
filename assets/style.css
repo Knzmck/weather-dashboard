@@ -1,10 +1,10 @@
 header {
-  height: 20%;
+  height: 8%;
   background-color: grey;
   display: flex;
   align-content: center;
   justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 10px;
 }
 
 h1 {
@@ -59,4 +59,8 @@ h1 {
 
 #maindiv {
     display: inline-block;
+}
+
+.card {
+    border: none;
 }
