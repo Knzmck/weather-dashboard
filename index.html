@@ -31,16 +31,26 @@
             </div>
 
             <main class="col-md-8 card">
+                
                 <section>
-                    <section class="row col-md-8 card" id="weather-today">
-                        <h2 class="row ml-2 mt-3" id="city"></h2>
-                        <text id="today-date" class="mb-4 ml-2 mt-1"></text>
+                    <div class="container"> 
+                    <div class="row col-md-12 card" id="maindiv"> 
+                        <div class="col-md-8 card" id="weather-today"> 
+                            <h2 class="ml-2 mt-3" id="city"></h2>
+                            <h3 id="today-date" class="mb-4 ml-2 mt-1"></h3>
+                            <h6 class="mb-4 ml-2" id="temp"> </h6>
+                            <h6 class="mb-4 ml-2" id="humidity"></h6>
+                            <h6 class="mb-4 ml-2" id="wind"></h6>
+                            <h6 class="mb-4 ml-2 card" text id="uv" class="card"> </h6>
+                        </div>
 
-                        <h6 class="row mb-4 ml-2">Temperature: <text class="ml-2" id="temp"> </text></h6>
-                        <h6 class="row mb-4 ml-2">Humidity: <text class="ml-2" id="humidity"> </text></h6>
-                        <h6 class="row mb-4 ml-2">Wind Speed: <text class="ml-2" id="wind"> </text></h6>
-                        <h6 class="row mb-4 ml-2">UV Index:<text class="ml-2" id="uv" class="card"> </text></h6>
-                    </section>
+                        <div class="col-md-4" id="icon"><img id="wicon" src="" alt="Weather icon"></div>
+
+                    </div>
+                        
+                    </div>
+                    
+
                     <section id="5day-forecast">
                         <h2 class="row mt-3 ml-2 mb-4">5-Day Forecast</h2>
                         <div class="row">
