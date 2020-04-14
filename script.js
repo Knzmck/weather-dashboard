@@ -96,6 +96,28 @@ function getWeather(city) {
                 ((response.daily[4].temp.day - 273.15) * 1.8 + 32).toFixed(1) +
                 "° F"
             );
+            
+            // display icons for future forecast boxes 
+            var iconCode = (response.daily[0].weather[0].icon);
+            $('#0day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
+            console.log(response.daily[0].weather[0].icon);
+
+            var iconCode = (response.daily[1].weather[0].icon);
+            $('#1day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
+            console.log(response.daily[1].weather[0].icon);
+
+            var iconCode = (response.daily[2].weather[0].icon);
+            $('#2day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
+            console.log(response.daily[2].weather[0].icon);
+
+            var iconCode = (response.daily[3].weather[0].icon);
+            $('#3day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
+            console.log(response.daily[3].weather[0].icon);
+
+            var iconCode = (response.daily[4].weather[0].icon);
+            $('#4day-icon').attr('src', 'http://openweathermap.org/img/w/' + iconCode + '.png');
+            console.log(response.daily[4].weather[0].icon);
+
 
             // displaying humidity for future forecast boxes
             $("#0day-humidity").text("Humidity: " + response.daily[0].humidity + "%");
