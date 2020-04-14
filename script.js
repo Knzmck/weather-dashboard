@@ -1,4 +1,5 @@
 //loading search History and buttons when page loads
+
 if (localStorage.getItem("searchHistory")) {
     var searchHistory = localStorage.getItem("searchHistory").split(",");
     console.log(searchHistory);
@@ -11,6 +12,7 @@ if (localStorage.getItem("searchHistory")) {
     }
 } else {
     var searchHistory = [];
+    getWeather('Kansas City')
 }
 // Getting today's date and future dates
 
