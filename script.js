@@ -162,7 +162,12 @@ $(".historyBtn").click(function (e) {
     getWeather($(this).text());
 });
 
+// get weather icon to display inline with weather box (bootstrap)
+
+// get weather icons to display
 
 // UV Index values 0-3 is green, 3-5 is yellow moderate, 6-7 is orange high, 8-10 is red very high, 11+ is violet extreme
 
 // Uppercase and lowercase are treated differently for adding into the array
+
+// add button when user clicks search button if there are no identical values
