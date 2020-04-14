@@ -20,12 +20,26 @@ h1 {
 }
 
 #uv {
-    width: 60px;
+    width: 30px;
     height: 25px;
-    background-color: rgb(172, 34, 34);
     margin-left: 5px;
+    border-radius: 15%;
 }
 
+.low-uv{
+    background-color: green;
+}
+
+.medium-uv {
+    background-color: yellow;
+}
+.high-uv {
+    background-color: tomato;
+}
+
+.extremely-high-uv {
+    background-color: violet;
+}
 #search-term {
     color: black;
     font-weight: bold;
