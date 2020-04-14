@@ -58,12 +58,26 @@ if (localStorage.getItem("searchHistory")) {
         var uvEl = parseFloat(response.current.uvi.toFixed(1));
         $('#uv').text(uvEl)
 
-        // displaying future forecast
-        $('#0day-temp').text((((response.daily[0].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+        // displaying temperature on future forecast boxes
+    //     $('#0day-temp').text((((response.daily[0].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+    //     $('#1day-temp').text((((response.daily[1].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+    //     $('#2day-temp').text((((response.daily[2].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+    //     $('#3day-temp').text((((response.daily[3].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+    //     $('#4day-temp').text((((response.daily[4].temp.day)-273.15) * 1.8 + 32).toFixed(1))
+
+    //     // displaying humidity for future forecast boxes
+    //    $('#0day-humidity').text((response.daily[0].humidity) + '%');
+    //    $('#1day-humidity').text((response.daily[1].humidity) + '%');
+    //    $('#2day-humidity').text((response.daily[2].humidity) + '%');
+    //    $('#3day-humidity').text((response.daily[3].humidity) + '%');
+    //    $('#4day-humidity').text((response.daily[4].humidity) + '%');
+
+
       });
     });
   }
   
+
   // Search button event: grab input from each box, performs search operation, pushes results to array of saved cities, clears out divs
   $("#search-btn").click(function (e) {
     e.preventDefault();
