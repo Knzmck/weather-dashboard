@@ -47,7 +47,7 @@ function getWeather(city) {
         var temp = (response.main.temp - 273.15) * 1.8 + 32;
         $("#city").text(response.name);
         $("#temp").text("Temperature: " + temp.toFixed(0) + "° F");
-        $("#wind").text("Wind Speed:" + response.wind.speed + " MPH");
+        $("#wind").text("Wind Speed: " + response.wind.speed + " MPH");
         $("#humidity").text("Humidity: " + response.main.humidity + "%");
 
         // displaying weather icon
