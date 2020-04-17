@@ -6,12 +6,17 @@ if (localStorage.getItem("searchHistory")) {
   for (let i = 0; i < searchHistory.length; i++) {
     var newBtn = $(
       "<button class='btn btn-link btn-lg active historyBtn'>"
-    ).text(searchHistory[i]);
+    ).text(titleCase(searchHistory[i]));
     recentSearches.append(newBtn);
   }
 } else {
   var searchHistory = [];
 }
+
+// function for returning string into the properly capitalized objects
+function titleCase(str) {
+    return str.toLowerCase().replace(/(^|\s)\S/g, L => L.toUpperCase());
+  }
 
 
 // Getting today's date and future dates
