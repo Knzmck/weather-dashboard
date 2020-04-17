@@ -13,11 +13,10 @@ if (localStorage.getItem("searchHistory")) {
   var searchHistory = [];
 }
 
-// function for returning string into the properly capitalized objects
+// function for returning string into the properly capitalized
 function titleCase(str) {
-    return str.toLowerCase().replace(/(^|\s)\S/g, L => L.toUpperCase());
-  }
-
+  return str.toLowerCase().replace(/(^|\s)\S/g, (L) => L.toUpperCase());
+}
 
 // Getting today's date and future dates
 const today = moment();
@@ -73,38 +72,41 @@ function getWeather(city) {
     }).then(function (response) {
       // test response
       // console.log(response);
-    
-    var uvEl = parseFloat(response.current.uvi.toFixed(1));
-    function checkUV () {
-     //  converting UV index as a number
-    var uvEl = parseFloat(response.current.uvi.toFixed(1));
 
-      //   checking for UV number and adding corresponding color
-           if (uvEl <= 2.9) {
-               
-            $("#uv").css("color", "green").text("UV Index: " + uvEl);
-  
-          } else if (uvEl < 5.9) {
-              $("#uv").css("color", "orange").text("UV Index: " + uvEl);
-        
-          } else if (uvEl < 7.9) {
-              $("#uv").css("color", "orangered").text("UV Index: " + uvEl);
-  
-          } else if (uvEl < 10) {
-            $("#uv").css("color", "red").text("UV Index: " + uvEl);
-  
-          } else {
-            $("#uv").css("color", "purple").text("UV Index: " + uvEl);
-          }
-    }
-    checkUV(uvEl)
+      var uvEl = parseFloat(response.current.uvi.toFixed(1));
+      function checkUV() {
+        //  converting UV index as a number
+        var uvEl = parseFloat(response.current.uvi.toFixed(1));
 
-    console.log(uvEl);
+        //   checking for UV number and adding corresponding color
+        if (uvEl <= 2.9) {
+          $("#uv")
+            .css("color", "green")
+            .text("UV Index: " + uvEl);
+        } else if (uvEl < 5.9) {
+          $("#uv")
+            .css("color", "orange")
+            .text("UV Index: " + uvEl);
+        } else if (uvEl < 7.9) {
+          $("#uv")
+            .css("color", "orangered")
+            .text("UV Index: " + uvEl);
+        } else if (uvEl < 10) {
+          $("#uv")
+            .css("color", "red")
+            .text("UV Index: " + uvEl);
+        } else {
+          $("#uv")
+            .css("color", "purple")
+            .text("UV Index: " + uvEl);
+        }
+      }
+      checkUV(uvEl);
 
-        // displaying UV index for appropriate city
-        // $("#uv").text("UV Index: " + uvEl);
+      console.log(uvEl);
 
-   
+      // displaying UV index for appropriate city
+      // $("#uv").text("UV Index: " + uvEl);
 
       // displaying temperature on future forecast boxes
       $("#0day-temp").text(
@@ -188,7 +190,7 @@ $("#search-btn").click(function (e) {
     //   creates new button
     var newBtn = $(
       "<button class='btn btn-link btn-lg active historyBtn'>"
-    ).text(city);
+    ).text(titleCase(city));
     recentSearches.append(newBtn);
   } else {
     searchHistory.shift();
@@ -198,7 +200,7 @@ $("#search-btn").click(function (e) {
     //   creates new button
     var newBtn = $(
       "<button class='btn btn-link btn-lg active historyBtn'>"
-    ).text(city);
+    ).text(titleCase(city));
     recentSearches.append(newBtn);
   }
   localStorage.setItem("searchHistory", searchHistory);
@@ -208,13 +210,3 @@ $("#search-btn").click(function (e) {
 $(".historyBtn").click(function (e) {
   getWeather($(this).text());
 });
-
-// get weather icon to display inline with weather box (bootstrap)
-
-// get weather icons to display
-
-// UV Index values 0-3 is green, 3-5 is yellow moderate, 6-7 is orange high, 8-10 is red very high, 11+ is violet extreme
-
-// Uppercase and lowercase are treated differently for adding into the array
-
-// add button when user clicks search button if there are no identical values
