@@ -9,8 +9,12 @@ if (localStorage.getItem("searchHistory")) {
     ).text(titleCase(searchHistory[i]));
     recentSearches.append(newBtn);
   }
+//   Search for last newly searched item by default 
+  getWeather(searchHistory[7])
 } else {
   var searchHistory = [];
+//   Search for weather in Kansas City if no search History
+  getWeather('Kansas City')
 }
 
 // function for returning string into the properly capitalized
@@ -210,3 +214,5 @@ $("#search-btn").click(function (e) {
 $(".historyBtn").click(function (e) {
   getWeather($(this).text());
 });
+
+// make last city default city
