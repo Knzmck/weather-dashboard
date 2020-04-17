@@ -19,26 +19,7 @@ h1 {
   margin: 10px;
 }
 
-#uv {
-    margin-left: 5px;
-    border-radius: 15%;
-    width: 105px;
-}
 
-.low-uv{
-    background-color: green;
-}
-
-.medium-uv {
-    background-color: yellow;
-}
-.high-uv {
-    background-color: tomato;
-}
-
-.extremely-high-uv {
-    background-color: rgb(141, 48, 141);
-}
 #search-term {
     color: black;
     font-weight: bold;
@@ -63,4 +44,11 @@ h1 {
 
 .card {
     border: none;
+}
+
+#uv {
+    margin-left: 5px;
+    border-radius: 10%;
+    width: 105px;
+    color: orangered
 }
