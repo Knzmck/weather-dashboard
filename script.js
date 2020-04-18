@@ -197,7 +197,7 @@ var city = $("#city-input").val();
     $("#city-input").val("");
 
     // event for ajax calls
-    getWeather(city);
+    getWeather((titleCase(city)));
 
 });
 
