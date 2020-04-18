@@ -185,13 +185,12 @@ function getWeather(city) {
     })
 }
 
-
 // Search button event: grab input from each box, performs search operation, pushes results to array of saved cities, clears out divs
 $("#search-btn").click(function (e) {
     e.preventDefault();
-    
-// variable for user typing in city
-var city = $("#city-input").val();
+
+    // variable for user typing in city
+    var city = $("#city-input").val();
 
     // Clears out search bar when user searches for city
     $("#city-input").val("");
@@ -206,4 +205,3 @@ $(".historyBtn").click(function (e) {
     getWeather($(this).text());
 });
 
-// How to check if a city or not ajax call
