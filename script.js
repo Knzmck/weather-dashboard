@@ -10,7 +10,7 @@ if (localStorage.getItem("searchHistory")) {
         recentSearches.append(newBtn);
     }
     //   Search for last newly searched item by default
-    getWeather(searchHistory[7]);
+    getWeather(searchHistory[0]);
 } else {
     var searchHistory = [];
     //   Search for weather in Kansas City if no search History
@@ -33,7 +33,7 @@ $("#3day-date").text(moment().add(4, "days").format("MM-DD-YYYY"));
 $("#4day-date").text(moment().add(5, "days").format("MM-DD-YYYY"));
 
 //   Ajax call to retrieve weather data from openweathermap
-console.log(searchHistory);
+// console.log(searchHistory);
 function getWeather(city) {
     var yourKey = "4c6debcfabe452a31f0225082b5f86a9";
     var queryURL =
@@ -44,7 +44,10 @@ function getWeather(city) {
     $.ajax({
         url: queryURL,
         method: "GET",
-    }).then(function (response) {
+        error: function() {
+            alert ("Please type in a valid city name")
+        },
+        success: function (response) {
         // Taking Coordinates from first response to use in AJAX call later
         var lat = response.coord.lat;
         var lon = response.coord.lon;
@@ -75,6 +78,31 @@ function getWeather(city) {
             url: queryURL,
             method: "GET",
         }).then(function (response) {
+                // first condition checking to see if the searched city is already in the array. It will still search for city but won't add new btn
+    if (searchHistory.indexOf(city) !== -1) {
+        // Will add new city to Array and create new button if less than 8 cities in array
+        } else if (searchHistory.length < 8) {
+            searchHistory.push(city);
+            //   creates new button for new city
+            var newBtn = $("<button class='btn btn-link btn-lg active historyBtn'>").text(titleCase(city));
+            recentSearches.append(newBtn);
+        // If array is full (limit to 8 cities)- it will push city searched 8 searches ago out of array and replace it with new city. 
+        // Buttons won't be deleted until after refresh
+        } else {
+            searchHistory.shift();
+            searchHistory.push(city);
+            //   creates new button for new city
+            var newBtn = $("<button class='btn btn-link btn-lg active historyBtn'>").text(titleCase(city));
+            recentSearches.append(newBtn);
+        }
+        localStorage.setItem("searchHistory", searchHistory);
+
+
+
+
+
+
+
             // Changing UV response from string to number
             var uvEl = parseFloat(response.current.uvi.toFixed(1));
             //   checking for UV number and adding corresponding UV color
@@ -154,8 +182,8 @@ function getWeather(city) {
             $("#3day-humidity").text("Humidity: " + response.daily[3].humidity + "%");
             $("#4day-humidity").text("Humidity: " + response.daily[4].humidity + "%");
         });
-    });
-}
+    }
+})}
 
 // Search button event: grab input from each box, performs search operation, pushes results to array of saved cities, clears out divs
 $("#search-btn").click(function (e) {
@@ -165,27 +193,9 @@ $("#search-btn").click(function (e) {
     // Clears out search bar when user searches for city
     $("#city-input").val("");
 
-    // first condition checking to see if the searched city is already in the array. It will still search for city but won't add new btn
-    if (searchHistory.indexOf(city) !== -1) {
-        getWeather(city);
-    // Will add new city to Array and create new button if less than 8 cities in array
-    } else if (searchHistory.length < 8) {
-        searchHistory.push(city);
-        getWeather(city);
-        //   creates new button for new city
-        var newBtn = $("<button class='btn btn-link btn-lg active historyBtn'>").text(titleCase(city));
-        recentSearches.append(newBtn);
-    // If array is full (limit to 8 cities)- it will push city searched 8 searches ago out of array and replace it with new city. 
-    // Buttons won't be deleted until after refresh
-    } else {
-        searchHistory.shift();
-        searchHistory.push(city);
-        getWeather(city);
-        //   creates new button for new city
-        var newBtn = $("<button class='btn btn-link btn-lg active historyBtn'>").text(titleCase(city));
-        recentSearches.append(newBtn);
-    }
-    localStorage.setItem("searchHistory", searchHistory);
+    // event for ajax calls
+    getWeather(city);
+
 });
 
 //   function for searching recently searched city by clicking on city button in left column
