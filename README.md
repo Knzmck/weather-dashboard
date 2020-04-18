@@ -22,10 +22,8 @@ https://openweathermap.org/ used to get weather information.
 
 ## Future goals
 
--Add a better way to store high scores using local storage properly. 
--Improve the playAgain function.
--Add more styling to pages.
--Get rid of any code smell. 
+-Improve styling
+-Simplify code and code smell
 
 
 ## Created by
